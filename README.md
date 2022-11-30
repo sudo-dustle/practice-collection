@@ -15,3 +15,11 @@ Spring Boot 와 최대한 비슷한 환경을 만들기 위해 일부러 Spring 
 1. `git fork`
 2. fork 된 레포지토리를 `git clone`
 3. 테스트 코드가 통과하게 코드 작성
+
+## 코드 구현
+
+Java 에서 제공하는 공식 Collection 과 다른 부분이 있을 수 있지만 메서드 네이밍 등은 최대한 맞추었습니다.
+
+- ArrayList
+  - [Java](https://github.com/ParkJiwoon/practice-collection/blob/implemented/src/main/kotlin/com/example/practice_collection/list/JavaArrayList.java)
+  - [Kotlin](https://github.com/ParkJiwoon/practice-collection/blob/implemented/src/main/kotlin/com/example/practice_collection/list/KotlinArrayList.kt)
