@@ -9,3 +9,9 @@ Spring Boot 와 최대한 비슷한 환경을 만들기 위해 일부러 Spring 
 - Java 17
 - Kotlin
 - Spring Boot 3.0.0
+
+## 방법
+
+1. `git fork`
+2. fork 된 레포지토리를 `git clone`
+3. 테스트 코드가 통과하게 코드 작성
