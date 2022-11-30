@@ -1,6 +1,7 @@
 package com.example.practice_collection;
 
 import com.example.practice_collection.list.JavaArrayList;
+import com.example.practice_collection.list.JavaList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,7 @@ public class JavaArrayListTest {
     @Test
     @DisplayName("JavaArrayList add 테스트")
     void testArrayList() {
-        JavaArrayList<String> list = new JavaArrayList<>();
+        JavaList<String> list = new JavaArrayList<>();
 
         list.add("add 1");
         list.add("add 2");
@@ -23,7 +24,7 @@ public class JavaArrayListTest {
     @Test
     @DisplayName("JavaArrayList get 테스트")
     void testGet() {
-        JavaArrayList<String> list = new JavaArrayList<>();
+        JavaList<String> list = new JavaArrayList<>();
         list.add("get sample");
 
         // success
@@ -37,7 +38,7 @@ public class JavaArrayListTest {
     @Test
     @DisplayName("JavaArrayList contains 테스트")
     void testContains() {
-        JavaArrayList<String> list = new JavaArrayList<>();
+        JavaList<String> list = new JavaArrayList<>();
         list.add("contains sample");
 
         // 있는 값을 넣으면 true
@@ -57,7 +58,7 @@ public class JavaArrayListTest {
     @Test
     @DisplayName("JavaArrayList remove 테스트")
     void testRemove() {
-        JavaArrayList<String> list = new JavaArrayList<>();
+        JavaList<String> list = new JavaArrayList<>();
 
         // 없는 요소를 넣으면 Nothing
         list.remove("hello");
@@ -85,14 +86,14 @@ public class JavaArrayListTest {
     @Test
     @DisplayName("JavaArrayList addAll 테스트")
     void testAddAll() {
-        JavaArrayList<String> list = new JavaArrayList<>();
+        JavaList<String> list = new JavaArrayList<>();
 
         // 빈 리스트를 넣으면 아무것도 없음
         list.addAll(new JavaArrayList<>());
         assertThat(list.size()).isEqualTo(0);
 
         // 빈 리스트에 다른 리스트를 넣을 수 있음
-        JavaArrayList<String> otherList = new JavaArrayList<>();
+        JavaList<String> otherList = new JavaArrayList<>();
         otherList.add("addAll 1");
         otherList.add("addAll 2");
 
