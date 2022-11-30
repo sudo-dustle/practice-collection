@@ -52,6 +52,10 @@ class KotlinArrayListTest {
         // null 값이 있으면 true
         list.add(null)
         assertThat(list.contains(null)).isTrue
+
+        // null 값이 있어도 다른 데이터는 정상 동작해야함
+        assertThat(list.contains("contains sample")).isTrue
+        assertThat(list.contains("contains")).isFalse
     }
 
     @Test
@@ -61,24 +65,25 @@ class KotlinArrayListTest {
 
         // 없는 요소를 넣으면 Nothing
         list.remove("hello")
-        list.add("remove 1")
-        list.add("remove 2")
-        list.add("remove 3")
-        list.add("remove 4")
-        list.add("remove 5")
 
-        // 0 원소 제거
-        list.remove("remove 1")
+        for (i in 0..9) {
+            list.add("remove " + (i + 1))
+        }
 
         // 마지막 원소 제거
-        list.remove("remove 5")
+        list.remove("remove 10")
 
-        // 가운데 원소 제거
+        // 첫번째 원소 제거
+        list.remove("remove 1")
+
+        // 중간 원소 제거
         list.remove("remove 3")
 
         // 최종 결과
+        assertThat(list.size()).isEqualTo(7)
         assertThat(list[0]).isEqualTo("remove 2")
         assertThat(list[1]).isEqualTo("remove 4")
+        assertThat(list[list.size() - 1]).isEqualTo("remove 9")
     }
 
     @Test
@@ -106,5 +111,13 @@ class KotlinArrayListTest {
         assertThat(list[1]).isEqualTo("addAll 2")
         assertThat(list[2]).isEqualTo("addAll 1")
         assertThat(list[3]).isEqualTo("addAll 2")
+
+        // 20 개 list 가 한번에 들어가도 ArrayList 내부 배열이 터지면 안됨
+        val anotherList = KotlinArrayList<String>()
+        for (i in 0..19) {
+            anotherList.add("another")
+        }
+        list.addAll(anotherList)
+        assertThat(list.size()).isEqualTo(24)
     }
 }
