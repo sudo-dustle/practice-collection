@@ -9,12 +9,12 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class JavaArrayListTest {
+public class JavaLinkedListTest {
 
     @Test
-    @DisplayName("JavaArrayList add 테스트")
+    @DisplayName("JavaLinkedList add 테스트")
     void testArrayList() {
-        JavaList<String> list = new JavaArrayList<>();
+        JavaList<String> list = new JavaLinkedList<>();
 
         list.add("add 1");
         list.add("add 2");
@@ -23,9 +23,9 @@ public class JavaArrayListTest {
     }
 
     @Test
-    @DisplayName("JavaArrayList get 테스트")
+    @DisplayName("JavaLinkedList get 테스트")
     void testGet() {
-        JavaList<String> list = new JavaArrayList<>();
+        JavaList<String> list = new JavaLinkedList<>();
         list.add("get sample");
 
         // success
@@ -37,9 +37,9 @@ public class JavaArrayListTest {
     }
 
     @Test
-    @DisplayName("JavaArrayList contains 테스트")
+    @DisplayName("JavaLinkedList contains 테스트")
     void testContains() {
-        JavaList<String> list = new JavaArrayList<>();
+        JavaList<String> list = new JavaLinkedList<>();
         list.add("contains sample");
 
         // 있는 값을 넣으면 true
@@ -61,9 +61,9 @@ public class JavaArrayListTest {
     }
 
     @Test
-    @DisplayName("JavaArrayList remove 테스트")
+    @DisplayName("JavaLinkedList remove 테스트")
     void testRemove() {
-        JavaList<String> list = new JavaArrayList<>();
+        JavaList<String> list = new JavaLinkedList<>();
 
         // 없는 요소를 넣으면 Nothing
         list.remove("hello");
@@ -89,16 +89,16 @@ public class JavaArrayListTest {
     }
 
     @Test
-    @DisplayName("JavaArrayList addAll 테스트")
+    @DisplayName("JavaLinkedList addAll 테스트")
     void testAddAll() {
-        JavaList<String> list = new JavaArrayList<>();
+        JavaList<String> list = new JavaLinkedList<>();
 
         // 빈 리스트를 넣으면 아무것도 없음
-        list.addAll(new JavaArrayList<>());
+        list.addAll(new JavaLinkedList<>());
         assertThat(list.size()).isEqualTo(0);
 
         // 빈 리스트에 다른 리스트를 넣을 수 있음
-        JavaList<String> otherList = new JavaArrayList<>();
+        JavaList<String> otherList = new JavaLinkedList<>();
         otherList.add("addAll 1");
         otherList.add("addAll 2");
 
@@ -115,11 +115,11 @@ public class JavaArrayListTest {
         assertThat(list.get(2)).isEqualTo("addAll 1");
         assertThat(list.get(3)).isEqualTo("addAll 2");
 
-        // JavaList 의 구현체라면 JavaLinkedList 도 가능하다
-        JavaList<String> arrayList = new JavaLinkedList<>();
-        arrayList.add("linkedList 1");
-        arrayList.add("linkedList 2");
-        arrayList.add("linkedList 3");
+        // JavaList 의 구현체라면 JavaArrayList 도 가능하다
+        JavaList<String> arrayList = new JavaArrayList<>();
+        arrayList.add("arrayList 1");
+        arrayList.add("arrayList 2");
+        arrayList.add("arrayList 3");
 
         list.addAll(arrayList);
         assertThat(list.size()).isEqualTo(7);
@@ -127,16 +127,8 @@ public class JavaArrayListTest {
         assertThat(list.get(1)).isEqualTo("addAll 2");
         assertThat(list.get(2)).isEqualTo("addAll 1");
         assertThat(list.get(3)).isEqualTo("addAll 2");
-        assertThat(list.get(4)).isEqualTo("linkedList 1");
-        assertThat(list.get(5)).isEqualTo("linkedList 2");
-        assertThat(list.get(6)).isEqualTo("linkedList 3");
-
-        // 20 개 list 가 한번에 들어가도 ArrayList 내부 배열이 터지면 안됨
-        JavaList<String> anotherList = new JavaArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            anotherList.add("another");
-        }
-        list.addAll(anotherList);
-        assertThat(list.size()).isEqualTo(27);
+        assertThat(list.get(4)).isEqualTo("arrayList 1");
+        assertThat(list.get(5)).isEqualTo("arrayList 2");
+        assertThat(list.get(6)).isEqualTo("arrayList 3");
     }
 }

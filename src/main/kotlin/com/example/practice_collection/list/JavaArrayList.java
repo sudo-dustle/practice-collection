@@ -117,4 +117,9 @@ public class JavaArrayList<E> implements JavaList<E> {
 
         this.size = newSize;
     }
+
+    @Override
+    public E[] toArray() {
+        return null;
+    }
 }
