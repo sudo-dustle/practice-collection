@@ -1,6 +1,9 @@
 package com.example.practice_collection
 
+import com.example.practice_collection.list.JavaLinkedList
+import com.example.practice_collection.list.JavaList
 import com.example.practice_collection.list.KotlinArrayList
+import com.example.practice_collection.list.KotlinLinkedList
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatExceptionOfType
 import org.junit.jupiter.api.DisplayName
@@ -111,6 +114,22 @@ class KotlinArrayListTest {
         assertThat(list[1]).isEqualTo("addAll 2")
         assertThat(list[2]).isEqualTo("addAll 1")
         assertThat(list[3]).isEqualTo("addAll 2")
+
+        // JavaList 의 구현체라면 KotlinLinkedList 도 가능하다
+        val arrayList: JavaList<String> = KotlinLinkedList()
+        arrayList.add("linkedList 1")
+        arrayList.add("linkedList 2")
+        arrayList.add("linkedList 3")
+
+        list.addAll(arrayList)
+        assertThat(list.size()).isEqualTo(7)
+        assertThat(list[0]).isEqualTo("addAll 1")
+        assertThat(list[1]).isEqualTo("addAll 2")
+        assertThat(list[2]).isEqualTo("addAll 1")
+        assertThat(list[3]).isEqualTo("addAll 2")
+        assertThat(list[4]).isEqualTo("linkedList 1")
+        assertThat(list[5]).isEqualTo("linkedList 2")
+        assertThat(list[6]).isEqualTo("linkedList 3")
 
         // 20 개 list 가 한번에 들어가도 ArrayList 내부 배열이 터지면 안됨
         val anotherList = KotlinArrayList<String>()
