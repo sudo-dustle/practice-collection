@@ -31,4 +31,9 @@ public class JavaArrayList<E> implements JavaList<E> {
     public void addAll(JavaList<E> list) {
 
     }
+
+    @Override
+    public E[] toArray() {
+        return null;
+    }
 }

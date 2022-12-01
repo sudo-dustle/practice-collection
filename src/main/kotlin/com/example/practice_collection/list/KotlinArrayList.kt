@@ -24,4 +24,8 @@ class KotlinArrayList<E> : JavaList<E> {
     override fun addAll(list: JavaList<E>?) {
         TODO("Not yet implemented")
     }
+
+    override fun toArray(): Array<E> {
+        TODO("Not yet implemented")
+    }
 }

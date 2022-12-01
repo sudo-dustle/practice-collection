@@ -7,4 +7,5 @@ public interface JavaList<E> {
     boolean contains(E e);
     void remove(E e);
     void addAll(JavaList<E> list);
+    E[] toArray();
 }
